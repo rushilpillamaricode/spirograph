@@ -1,7 +1,9 @@
 import turtle
+from turtle import Screen
 import random 
 
 t = turtle.Turtle()
+
 turtle.colormode(255) 
 def random_color():
     r = random.randint(0,255)
@@ -9,11 +11,15 @@ def random_color():
     b = random.randint(0,255)
     color = (r, g, b)
     return color
-
-directions = [0,90,180,270]
-t.pensize(5)
 t.speed("fastest")
-for i in range(500):
-    t.color(random_color()) 
-    t.forward(20)
-    t.setheading(random.choice(directions))
+
+def spirograph(sizeofgap):
+    for _ in range(int(360/sizeofgap)):
+        t.circle(100)
+        t.color(random_color())
+        t.setheading(t.heading() + sizeofgap)
+        
+        
+spirograph(5)        
+s = Screen()
+s.exitonclick()
